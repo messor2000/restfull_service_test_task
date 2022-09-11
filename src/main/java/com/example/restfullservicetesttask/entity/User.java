@@ -2,6 +2,9 @@ package com.example.restfullservicetesttask.entity;
 
 
 import com.example.restfullservicetesttask.util.IsAfter;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.Email;
@@ -10,6 +13,9 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Past;
 import java.util.Date;
 
+@Data
+@ToString
+@EqualsAndHashCode
 public class User {
 
     private long id;
@@ -26,7 +32,7 @@ public class User {
 
     @Past(message = "date of birth must be less than today")
     @IsAfter(current = "1900-01-01")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
     private Date dateOfBirth;
 
     private String address;
