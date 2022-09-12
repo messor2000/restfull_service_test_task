@@ -2,9 +2,7 @@ package com.example.restfullservicetesttask.entity;
 
 
 import com.example.restfullservicetesttask.util.IsAfter;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.Email;
@@ -16,6 +14,8 @@ import java.util.Date;
 @Data
 @ToString
 @EqualsAndHashCode
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
 
     private long id;

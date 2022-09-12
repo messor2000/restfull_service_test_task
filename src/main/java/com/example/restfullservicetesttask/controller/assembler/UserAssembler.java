@@ -1,6 +1,6 @@
 package com.example.restfullservicetesttask.controller.assembler;
 
-import com.example.restfullservicetesttask.controller.Controller;
+import com.example.restfullservicetesttask.controller.UserController;
 import com.example.restfullservicetesttask.entity.User;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
@@ -16,7 +16,7 @@ public class UserAssembler implements RepresentationModelAssembler<User, EntityM
     public EntityModel<User> toModel(User user) {
 
         return EntityModel.of(user,
-                linkTo(methodOn(Controller.class).getUserById(user.getId())).withSelfRel(),
-                linkTo(methodOn(Controller.class).getAll()).withRel("users"));
+                linkTo(methodOn(UserController.class).getUserById(user.getId())).withSelfRel(),
+                linkTo(methodOn(UserController.class).getAll()).withRel("users"));
     }
 }

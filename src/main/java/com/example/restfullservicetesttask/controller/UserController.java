@@ -29,7 +29,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @RestController
 @AllArgsConstructor
 @FieldDefaults(makeFinal = true, level = AccessLevel.PRIVATE)
-public class Controller {
+public class UserController {
 
     UserService userService;
     UserAssembler assembler;
@@ -37,7 +37,7 @@ public class Controller {
     @Value("${allowed.age}")
     int allowedAge;
 
-    @GetMapping("/orders/{id}")
+    @GetMapping("/users/{id}")
     public EntityModel<User> getUserById(@PathVariable Long id) {
         User user = userService.findById(id);
 
@@ -94,7 +94,7 @@ public class Controller {
     public CollectionModel<EntityModel<User>> getAll() {
         List<EntityModel<User>> users = userService.findAll();
 
-        return CollectionModel.of(users, linkTo(methodOn(Controller.class).getAll()).withSelfRel());
+        return CollectionModel.of(users, linkTo(methodOn(UserController.class).getAll()).withSelfRel());
     }
 
     @GetMapping("/users")
@@ -107,6 +107,6 @@ public class Controller {
         }
 
         List<EntityModel<User>> users = userService.findAll();
-        return CollectionModel.of(users, linkTo(methodOn(Controller.class).getAll()).withRel("users"));
+        return CollectionModel.of(users, linkTo(methodOn(UserController.class).getAll()).withRel("users"));
     }
 }
